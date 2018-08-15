@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>simulation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<header>
+	<center><h1>Header</h1></center>
+	<nav>
+			<ul>
+				<li><a href="accueil.html">lienVersDautresPages</a></li>
+			<ul/>
+		</nav>
+</header>
+<body>
+  <h1>Body</h1>
+<script src="https://cdn.jsdelivr.net/terra/latest/mainfile"></script>
+
+
+   <script>
+/*var elementary = new terra.Terrarium(20, 20);
+
+terra.registerCA({
+  type: 'elementary',
+  alive: false,
+  ruleset: [1, 0, 0, 1, 0, 0, 1, 0].reverse(), // rule 146
+  colorFn: function () { return this.alive ? this.color + ',1' : '0,0,0,0'; },
+  process: function (neighbors, x, y) {
+    if (this.age === y) {
+      var index = neighbors.filter(function (neighbor) { return neighbor.coords.y === y - 1;
+      }).map(function (neighbor) { return neighbor.creature.alive ? 1 : 0; });
+      index = parseInt(index.join(''), 2);
+      this.alive = isNaN(index) ? !x : this.ruleset[index];
+    }
+    return true;
+  }
+});
+
+elementary.grid = elementary.makeGrid('elementary');
+elementary.animate();*/
+
+terra.registerCreature({
+  type: 'secondCreature',
+  color: [120, 0, 240],
+  sustainability: 6,
+  reproduceLv: 1
+});
+
+terra.registerCreature({
+  type: 'blood',
+  color: [244, 0, 0],
+  sustainability: 0,
+  move: false,
+  reproduceLV: 0,
+  wait: function() { this.energy += 1; },
+  initialEnergy: 10
+});
+
+terra.registerCreature({
+  type: 'simplePlant',
+  color: [166, 226, 46],
+  size: 0,
+  reproduceLv: 0.8,
+  wait: function() { this.energy += 3; },
+  move: false,
+  actionRadius: 0
+});
+
+// initialize our environment
+var ex1 = new terra.Terrarium(25, 25, {id: 'ex1'});
+ex1.grid = ex1.makeGridWithDistribution([['blood', 1], ['simplePlant', 9]]);
+ex1.animate(300);
+   </script>
+</body>
+</html>
